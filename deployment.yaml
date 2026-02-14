@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adk-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adk-app
+  template:
+    metadata:
+      labels:
+        app: adk-app
+    spec:
+      containers:
+      - name: adk-container
+        image: adk-demo:latest
+        imagePullPolicy: Never  # <--- Tells K8s to use the image just loaded
+        ports:
+        - containerPort: 8000
+        env:
+        - name: ADK_HOST
+          value: "0.0.0.0"
+        - name: ADK_PORT
+          value: "8000"

@@ -6,7 +6,7 @@ This guide explains how to containerize the application using `uv` and deploy it
 
 ---
 
-## 🚀 1. Docker Image Construction
+## 🚀 1. Docker Image & Kubernetes deployment 
 
 The Dockerfile uses a multi-stage approach with `uv` to ensure a fast, lightweight, and reproducible environment.
 
@@ -18,20 +18,21 @@ The Dockerfile uses a multi-stage approach with `uv` to ensure a fast, lightweig
 From the root of the project (where the Dockerfile is located), run:
 ```bash
 docker build -t adk-demo:latest .
+```
 
-## 🚀 1. Docker Image Construction
-
-## Sideloading to Minikube
+### Sideloading to Minikube
+Sideload the image to minikube "built-in" registries
 ```bash
 minikube image load adk-demo:latest
-
+```
 ### Deploy Kubernetes Deployment & Service
-
+Deploy the K8 resources
 ```bash
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
-
-###Access the Application
-Minikube operates in an isolated environment, you need to create a tunnel to reach the service
+```
+### Access the Application
+Minikube operates in an isolated environment,a tunnel need to reach the service
 ```bash
 minikube service adk-service
+```

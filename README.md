@@ -17,13 +17,13 @@ The Dockerfile uses a multi-stage approach with `uv` to ensure a fast, lightweig
 ### Build the Image
 From the root of the project (where the Dockerfile is located), run:
 ```bash
-docker build -t adk-demo:latest .
+docker build -t <image_name>:<tag> .
 ```
 
 ### Sideloading to Minikube
 Sideload the image to minikube "built-in" registries
 ```bash
-minikube image load adk-demo:latest
+minikube image load <image_name>:<tag>
 ```
 ### Deploy Kubernetes Deployment & Service
 Deploy the K8 resources
